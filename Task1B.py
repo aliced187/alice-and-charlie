@@ -5,10 +5,12 @@ from floodsystem.stationdata import build_station_list
 import floodsystem.datafetcher
 
 
+#Demonstration program printing list of 10 closest and 10 furthest stations
 
 
 
 def run():
+
     stations = build_station_list()
     p = (52.2053, 0.1218)
 
