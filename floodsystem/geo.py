@@ -6,6 +6,7 @@ geographical data.
 
 """
 
+from re import I
 from .utils import sorted_by_key  # noqa
 
 from haversine import haversine
@@ -37,5 +38,26 @@ def stations_within_radius(stations, centre, r):
             test.append(i[0])
     return test
     
+def rivers_with_stations(stations):
+    stations = build_station_list()
+    #create and empty set
+    names = set()
+    for i in stations:
+        names.add(i.river)
+    
+    output = list(sorted(names))
+            
+    return output 
 
-  
+def stations_by_river(stations):
+    #create empty dictionary
+    one = {}
+    stations = build_station_list()
+    rivers = rivers_with_stations(stations)
+
+    for i in rivers:
+        x = {i: 0}
+        one.update(x)
+    y = []
+    
+#create a list of stations for one river 
