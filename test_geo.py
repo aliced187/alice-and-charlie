@@ -27,7 +27,7 @@ def test_stations_by_distance():
     #Test output is a tuple, first two entries in tuple are strings and final entry in tuple is a float 
 
     assert type(x[0]) == tuple
-    assert type(x[0][0]) and type(x[0][1]) == string
+    assert type(x[0][0]) and type(x[0][1]) == str
     assert type(x[0][2]) == float
 
     #Test that there is an output
