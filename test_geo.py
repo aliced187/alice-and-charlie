@@ -54,27 +54,46 @@ def test_stations_by_distance():
     assert x[1][0:2] == ('Test 2', 'town2')
 
 
-#def test_stations_within_radius():
+def test_stations_within_radius():
     
     #Build list of stations
- #   stations = build_station_list()
-
+    station1 = MonitoringStation(station_id= 'stn_id_1',
+                                 measure_id= 'measure_id_1',
+                                 label= 'Test 1',
+                                 coord= (0.0, 1.0),
+                                 typical_range= (0.0, 1.0),
+                                 river= 'river1',
+                                 town= 'town1' )
+    station2 = MonitoringStation(station_id= 'stn_id_2',
+                                 measure_id= 'measure_id_2',
+                                 label= 'Test 2',
+                                 coord= (1.0, 1.0),
+                                 typical_range= (0.0, 1.0),
+                                 river= 'river2',
+                                 town= 'town2' )
+    station3 = MonitoringStation(station_id= 'stn_id_3',
+                                 measure_id= 'measure_id_3',
+                                 label= 'Test 3',
+                                 coord= (10.0, 10.0),
+                                 typical_range= (0.0, 1.0),
+                                 river= 'river3',
+                                 town= 'town3' )
+    
+    stations = [station1, station2, station3]
     #Centre point and radius 
-  #  centre = (52.2053, 0.1218)
-   # r = 10 
+    centre = (0.0, 0.0)
+    r = 200 
 
     #Naming function to test
-    #x = stations_within_radius(centre, r)
+    x = stations_within_radius(stations, centre, r)
 
     #Test type of output
-    #if len(x) > 0:
-     #   assert type(x) == list
-      #  assert type(x[0]) == str 
-    #else:
-     #   pass
+    assert type(x) == list
+    assert type(x[0]) == str 
 
-    #Test that distance is within radius
+    #Test correct output
+    assert len(x) == 2
+    
 
-    #if haversine(stations[0].coord, centre) < r:
-     #   assert stations[0].station == x[0]
+    
 
