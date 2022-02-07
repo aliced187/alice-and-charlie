@@ -1,5 +1,5 @@
 import string
-from floodsystem.geo import stations_by_distance, stations_by_river, stations_within_radius
+from floodsystem.geo import stations_by_distance, stations_by_river, stations_within_radius, rivers_with_stations
 
 
 from re import I
@@ -164,7 +164,7 @@ def test_stations_by_river():
 
     #Test type of output
     assert type(x) == dict
-    assert x['river2'] == [station2, station3]
-    assert x['river1'] == [station1]
+    assert x['river2'] == ['Test2', 'Test3']
+    assert x['river1'] == ['Test1']
     
 
