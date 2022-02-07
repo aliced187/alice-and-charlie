@@ -18,7 +18,7 @@ from floodsystem.stationdata import build_station_list
 def stations_by_distance(stations, p):
     #Function for list of stations and distance from a point p
 
-    stations = build_station_list()
+    #stations = build_station_list()
     names = []
     distance = []
     towns = []
@@ -36,12 +36,11 @@ def stations_within_radius(stations, centre, r):
     x = stations_by_distance(stations, centre)
     test = []
     for i in x:
-        if i[1] < r:
+        if i[2] < r:
             test.append(i[0])
     return test
     
 def rivers_with_stations(stations):
-    stations = build_station_list()
     #create and empty set
     names = set()
     for i in stations:

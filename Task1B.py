@@ -17,6 +17,7 @@ def run():
     x = stations_by_distance(stations, p)
     print(x[:10])
     print(x[-10:])
+    print(type(x[0][0]))
 
 if __name__ == "__main__":
     print("*** Task 1B: CUED Part IA Flood Warning System ***")

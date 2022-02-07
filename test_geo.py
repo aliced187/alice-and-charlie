@@ -1,5 +1,5 @@
 import string
-from floodsystem.geo import stations_by_distance
+from floodsystem.geo import stations_by_distance, stations_within_radius
 
 
 from re import I
@@ -13,16 +13,30 @@ from floodsystem.stationdata import build_station_list
 def test_stations_by_distance():
 
     #Build test station list 
-    stations = build_station_list()
+    station1 = MonitoringStation(station_id= 'stn_id_1',
+                                 measure_id= 'measure_id_1',
+                                 label= 'Test 1',
+                                 coord= (0.0, 1.0),
+                                 typical_range= (0.0, 1.0),
+                                 river= 'river1',
+                                 town= 'town1' )
+    station2 = MonitoringStation(station_id= 'stn_id_2',
+                                 measure_id= 'measure_id_2',
+                                 label= 'Test 2',
+                                 coord= (1.0, 1.0),
+                                 typical_range= (0.0, 1.0),
+                                 river= 'river2',
+                                 town= 'town2' )
+
+    stations = [station1, station2]
     
     #Point to test 
-    p =(52.2053, 0.1218)
+    p =(0.0, 0.0)
 
     x = stations_by_distance(stations, p)
 
     #Test sorting of distance of tuples in list
     assert x[0][2] < x[1][2]
-    #assert x[i][2] < x[i + 1][2]
 
     #Test output is a tuple, first two entries in tuple are strings and final entry in tuple is a float 
 
@@ -33,3 +47,34 @@ def test_stations_by_distance():
     #Test that there is an output
 
     assert len(x) > 0
+
+    #Test correct outputs
+
+    assert x[0][0:2] == ('Test 1', 'town1')
+    assert x[1][0:2] == ('Test 1', 'town2')
+
+
+#def test_stations_within_radius():
+    
+    #Build list of stations
+ #   stations = build_station_list()
+
+    #Centre point and radius 
+  #  centre = (52.2053, 0.1218)
+   # r = 10 
+
+    #Naming function to test
+    #x = stations_within_radius(centre, r)
+
+    #Test type of output
+    #if len(x) > 0:
+     #   assert type(x) == list
+      #  assert type(x[0]) == str 
+    #else:
+     #   pass
+
+    #Test that distance is within radius
+
+    #if haversine(stations[0].coord, centre) < r:
+     #   assert stations[0].station == x[0]
+
