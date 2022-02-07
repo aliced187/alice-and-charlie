@@ -51,7 +51,7 @@ def test_stations_by_distance():
     #Test correct outputs
 
     assert x[0][0:2] == ('Test 1', 'town1')
-    assert x[1][0:2] == ('Test 1', 'town2')
+    assert x[1][0:2] == ('Test 2', 'town2')
 
 
 #def test_stations_within_radius():
