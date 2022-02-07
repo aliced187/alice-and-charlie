@@ -21,7 +21,7 @@ def test_stations_by_distance():
     x = stations_by_distance(stations, p)
 
     #Test sorting of distance of tuples in list
-    #assert x[0][2] < x[1][2]
+    assert x[0][2] < x[1][2]
     #assert x[i][2] < x[i + 1][2]
 
     #Test output is a tuple, first two entries in tuple are strings and final entry in tuple is a float 
@@ -30,6 +30,6 @@ def test_stations_by_distance():
     #assert type(x[0][0]) and type(x[0][1]) == string
     #assert type(x[0][2]) == float
 
-    #Test that there is an output 
+    #Test that there is an output
 
     assert len(x) > 0
