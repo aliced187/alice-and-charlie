@@ -19,10 +19,10 @@ def run():
 run()
 
 #Testing second part of Task 1D
-#def part_b():
- #   stations = build_station_list()
-  #  x = stations_by_river(stations)
+def part_b():
+    stations = build_station_list()
+    x = stations_by_river(stations)
 
-   # return print(x)
+    return print(x)
 
-#part_b()
+part_b()

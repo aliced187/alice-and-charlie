@@ -51,14 +51,23 @@ def rivers_with_stations(stations):
     return output 
 
 def stations_by_river(stations):
-    #create empty dictionary
-    one = {}
-    stations = build_station_list()
-    rivers = rivers_with_stations(stations)
+    #Function that returns a dict that maps river names (key) to a list of station objects on that river
+    river_dict = {}
+    for station in stations:
+        river_dict[station.river] = None
+    
+    for river in river_dict:
+        river_stations = []
+        for station in stations:
+            if station.river == river:
+                river_stations += [station.name]
+        
+        river_dict[river] = river_stations
+    
+    return (river_dict)
 
-    for i in rivers:
-        x = {i: 0}
-        one.update(x)
-    y = []
+    
+
+    
     
 #create a list of stations for one river 
