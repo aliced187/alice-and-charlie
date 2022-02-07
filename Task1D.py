@@ -15,14 +15,18 @@ def run():
     x = rivers_with_stations(stations)
     
     return print(len(x), 'stations, First 10:', x[:10])
-           
-run()
+
 
 #Testing second part of Task 1D
 def part_b():
     stations = build_station_list()
     x = stations_by_river(stations)
+   
+    return print('River Aire:', sorted((x)['River Aire'])), print('River Cam:', sorted((x)['River Cam'])), print('River Thames:', sorted((x)['River Thames']))
+    
 
-    return print(x)
 
-part_b()
+if __name__ == "__main__":
+    print("*** Task 1C: CUED Part IA Flood Warning System ***")
+    run()
+    part_b()
