@@ -21,12 +21,14 @@ def stations_by_distance(stations, p):
     stations = build_station_list()
     names = []
     distance = []
+    towns = []
     for station in stations:
         names.append(station.name)
+        towns.append(station.town)
         distance.append(haversine(p, station.coord))
     #Create a list of tuples and sort them 
-    output = list(zip(names, distance))    
-    output = sorted_by_key(output, 1)
+    output = list(zip(names, towns, distance))    
+    output = sorted_by_key(output, 2)
     return output
     
 def stations_within_radius(stations, centre, r):
