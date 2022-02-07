@@ -164,7 +164,7 @@ def test_stations_by_river():
 
     #Test type of output
     assert type(x) == dict
-    assert x['river2'] == ['Test2', 'Test3']
-    assert x['river1'] == ['Test1']
+    assert x['river2'] == ['Test 2', 'Test 3']
+    assert x['river1'] == ['Test 1']
     
 
