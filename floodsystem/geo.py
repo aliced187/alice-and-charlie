@@ -67,30 +67,45 @@ def stations_by_river(stations):
     
     return (river_dict)
 
-    
-
-    
-    
 #create a list of stations for one river 
 
 def rivers_by_station_number(stations, N):
+    #function that returns list of N rivers (river name, number of stations) tuples, sorted by the greatest number of stations.
+    #If there are more rivers with the same number of stations as the Nth entry, these are also included in the list
     rnames = []
     c = 0
     for station in stations:
         rnames.append(station.river)
+    #create new list of rivers the stations are at, allowing duplicates
     drivstat = Counter(rnames)
     rivstat = drivstat.items()
     sortrivstat = sorted(rivstat,key=lambda x: x[1], reverse=True)
     rivnum = [item[1] for item in sortrivstat]
+    #counts frequency of stations at rivers and sorts them into two lists, one with (river name, frequency) touples, the there with frequency, both in descending order
     last = N - 1
     lastval = rivnum[last] 
+    #finds Nth river's number of stations
     for x in range(len(rivnum)):
         if rivnum[x] >= lastval:
             c += 1
+    #Finds the value at which Nth river's number of stations stops
     return  sortrivstat[:c]
+    #returns list
     
+def inconsistent_typical_range_stations(stations):
+    ranges = []
+    names = []
+    inco = []
+    for station in stations:
+        ranges.append(station.typical_range)
+        names.append(station.name)
+    for x in range(len(ranges)):
+        if ranges[x] == None:
+            inco.append(names[x])
+        else:
+            value = ranges[x][1] - ranges[x][0]
+            if value < 0:
+                inco.append(names[x])
+    return (inco)
 
 
-
-    
-    

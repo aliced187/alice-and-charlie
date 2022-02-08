@@ -7,6 +7,9 @@ for manipulating/modifying station data
 """
 
 
+from sqlalchemy import true
+
+
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -38,3 +41,16 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+    
+    def typical_range_consistent(self):
+        if self.typical_range == None:
+            return False
+        #If a value of the range is provided as None (none available), it will return False to show a inconsistant dataset
+        else:
+            value = self.typical_range[1] - self.typical_range[0]
+            if value >= 0:
+                return True
+                #If the range is positive (higher val is larger than lower val), it will return True for a consistant data set as we know all ranges are provided.
+            else:
+                return False
+                #If the range is negative (higher val is smaller than lower val (inconsistant data)), it will return False to show a inconsistant dataset

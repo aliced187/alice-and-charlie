@@ -1,5 +1,5 @@
 import string
-from floodsystem.geo import stations_by_distance, stations_by_river, stations_within_radius, rivers_with_stations
+from floodsystem.geo import stations_by_distance, stations_by_river, stations_within_radius, rivers_with_stations, rivers_by_station_number, inconsistent_typical_range_stations
 
 
 from re import I
@@ -168,7 +168,7 @@ def test_stations_by_river():
     assert x['river1'] == ['Test 1']
     
 
-def rivers_by_station_number():
+def test_rivers_by_station_number():
     #Create test station list 
     station1 = MonitoringStation(station_id= 'stn_id_1',
                                  measure_id= 'measure_id_1',
@@ -196,4 +196,35 @@ def rivers_by_station_number():
     outputr = rivers_by_station_number(stations, N)
     #Test type of output
     assert type(outputr) == list
+    #Test output
+    assert outputr == [('river2', 2),('river1', 1)]
 
+def test_inconsistent_typical_range_stations():
+
+    #Create test station list 
+    station1 = MonitoringStation(station_id= 'stn_id_1',
+                                 measure_id= 'measure_id_1',
+                                 label= 'Test 1',
+                                 coord= (0.0, 1.0),
+                                 typical_range= (0.0, 1.0),
+                                 river= 'river1',
+                                 town= 'town1' )
+    station2 = MonitoringStation(station_id= 'stn_id_2',
+                                 measure_id= 'measure_id_2',
+                                 label= 'Test 2',
+                                 coord= (1.0, 1.0),
+                                 typical_range= (5.0, 1.0),
+                                 river= 'river2',
+                                 town= 'town2' )
+    station3 = MonitoringStation(station_id= 'stn_id_3',
+                                 measure_id= 'measure_id_3',
+                                 label= 'Test 3',
+                                 coord= (100.0, 100.0),
+                                 typical_range= (None),
+                                 river= 'river2',
+                                 town= 'town3' )
+
+    stations = [station1, station2, station3]
+    output = inconsistent_typical_range_stations(stations)
+    assert type(output) == list
+    assert output == ['river1', 'river2']
