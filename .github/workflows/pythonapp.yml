@@ -32,6 +32,7 @@ jobs:
 
       - name: Run unit tests using pytest
         run: pytest -v
+             
 
       - name: Run Deliverable 1 code
         run: |
@@ -39,6 +40,8 @@ jobs:
           python Task1B.py
           python Task1C.py
           python Task1D.py
+          python Task1E.py
+          python Task1F.py
 
 
       - name: Run Deliverable 2 code
