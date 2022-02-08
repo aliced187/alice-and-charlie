@@ -93,19 +93,25 @@ def rivers_by_station_number(stations, N):
     #returns list
     
 def inconsistent_typical_range_stations(stations):
+    #function to build and return list of station names which have inconsistant ranges
     ranges = []
     names = []
     inco = []
+    #make empty lists
     for station in stations:
         ranges.append(station.typical_range)
         names.append(station.name)
+        #add corresponding values to list
     for x in range(len(ranges)):
         if ranges[x] == None:
             inco.append(names[x])
+            #If there are no values for ranges of this station (it will show up as None), then the station name is recorded to the list
         else:
             value = ranges[x][1] - ranges[x][0]
             if value < 0:
                 inco.append(names[x])
+                #If the higher range value is lower than the lower range value for this station, then the station name is recorded to the list
     return (inco)
+    #returns list of names of stations with inconsistant data
 
 
