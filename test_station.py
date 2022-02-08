@@ -26,7 +26,7 @@ def test_create_monitoring_station():
     assert s.river == river
     assert s.town == town
 
-def test_typical_range_consistent():
+def test_typical_range_consistent(s):
 
     # Create a station for higher lower range
     s_id = "test-s-id"
