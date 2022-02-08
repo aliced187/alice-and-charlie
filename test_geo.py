@@ -227,4 +227,4 @@ def test_inconsistent_typical_range_stations():
     stations = [station1, station2, station3]
     output = inconsistent_typical_range_stations(stations)
     assert type(output) == list
-    assert output == ['river1', 'river2']
+    assert output == ['Test1', 'Test2']
