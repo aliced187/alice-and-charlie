@@ -5,7 +5,6 @@
 
 from floodsystem.station import MonitoringStation
 
-
 def test_create_monitoring_station():
 
     # Create a station
@@ -26,7 +25,7 @@ def test_create_monitoring_station():
     assert s.river == river
     assert s.town == town
 
-def test_typical_range_consistent(s):
+def test_typical_range_consistent():
 
     # Create a station for higher lower range
     s_id = "test-s-id"
@@ -59,6 +58,6 @@ def test_typical_range_consistent(s):
     s3 = MonitoringStation(s3_id, m3_id, label3, coord3, trange3, river3, town3)
 
 
-    assert test_typical_range_consistent(s) == False
-    assert test_typical_range_consistent(s2) == False
-    assert test_typical_range_consistent(s3) == True
+    assert s.typical_range_consistent() == False
+    assert s2.typical_range_consistent() == False
+    assert s3.typical_range_consistent() == True
