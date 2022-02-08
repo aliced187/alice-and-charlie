@@ -7,9 +7,10 @@ geographical data.
 """
 
 from re import I
-from .utils import sorted_by_key  # noqa
+from .utils import sorted_by_key  #noqa
 
-from haversine import haversine
+from haversine import haversine #noqa
+from collections import Counter
 from . import datafetcher
 from .station import MonitoringStation
 from floodsystem.stationdata import build_station_list
@@ -71,3 +72,25 @@ def stations_by_river(stations):
     
     
 #create a list of stations for one river 
+
+def rivers_by_station_number(stations, N):
+    rnames = []
+    c = 0
+    for station in stations:
+        rnames.append(station.river)
+    drivstat = Counter(rnames)
+    rivstat = drivstat.items()
+    sortrivstat = sorted(rivstat,key=lambda x: x[1], reverse=True)
+    rivnum = [item[1] for item in sortrivstat]
+    last = N - 1
+    lastval = rivnum[last] 
+    for x in range(len(rivnum)):
+        if rivnum[x] >= lastval:
+            c += 1
+    return  sortrivstat[:c]
+    
+
+
+
+    
+    
