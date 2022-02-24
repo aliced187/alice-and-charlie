@@ -1,19 +1,16 @@
+from distutils.command.build import build
 
-import datetime
-from distutils.command import build 
-from matplotlib.pyplot import plot
-from floodsystem.plot import plot_water_levels
+from floodsystem.plot import plot_water_level_with_fit
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
+import datetime
 from floodsystem.utils import sorted_by_key
 
 def run():
     stations = build_station_list()
-    #Programme to plot water levels over the past 10 days for 5 stations at which current relative water level is greatest 
     update_water_levels(stations)
 
     #Create list of station names and levels 
-
     names = []
     level = []
     
@@ -35,14 +32,12 @@ def run():
 
     for i in x:
         names.append(i[0])
- 
+    
     for station in stations:
         if station.name in names:
-            dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days=10))
-            plot_water_levels(station, dates, levels)
-           
-  
-    
+            dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days=2))
+            plot_water_level_with_fit(station, dates, levels, 4)
+         
 run()
 
-
+    
