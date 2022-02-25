@@ -18,11 +18,13 @@ def run():
     level = []
     
     for station in stations:
-        names.append(station.name)
         if station.latest_level == None:
+            pass
+        elif station.latest_level > 90:
             pass
         else:
             level.append(station.latest_level)
+            names.append(station.name)
 
     #Create a list of tuples and sort them 
     output = list(zip(names, level))  
@@ -40,6 +42,11 @@ def run():
         if station.name in names:
             dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days=10))
             plot_water_levels(station, dates, levels)
+
+   # for station in stations:
+    #    if station.name == 'Letcombe Basset':
+     #       dates, levels = fetch_measure_levels(station.measured_id, dt = datetime.timedelta(days=10))
+  
            
   
     
