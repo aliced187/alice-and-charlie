@@ -18,5 +18,5 @@ def test():
 
     poly, d0 = analysis.polyfit(times, levels, 2)
 
-    assert d0 == x[0]
+    assert abs(d0) == abs(x[0])
     assert isinstance(poly, np.poly1d)
