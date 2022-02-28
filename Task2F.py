@@ -5,6 +5,10 @@ from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
 import datetime
 from floodsystem.utils import sorted_by_key
+from matplotlib import dates
+from floodsystem import analysis
+import numpy as np
+
 
 def run():
     stations = build_station_list()
@@ -41,5 +45,3 @@ def run():
             plot_water_level_with_fit(station, dates, levels, 4)
          
 run()
-
-    
