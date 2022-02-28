@@ -13,7 +13,7 @@ update_water_levels(stations)
 
 def test():
     dt = 10
-    times, levels = fetch_measure_levels(stations.measure_id, dt = datetime.timedelta(days=dt))
+    times, levels = fetch_measure_levels(stations[0].measure_id, dt = datetime.timedelta(days=dt))
     x = dates.date2num(times)
 
     poly, d0 = analysis.polyfit(times, levels, 2)

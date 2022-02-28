@@ -16,6 +16,7 @@ test:
   - python test_stationdata.py
   - python test_utils.py
   - python test_geo.py
+  - python test_analysis.py
 
   # Run deliverables. Add your deliverables to the test system here.
   - python Task1A.py
