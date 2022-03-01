@@ -59,5 +59,5 @@ class MonitoringStation:
             return None
         #if typical range is consistant, returns relative water level
         else:
-            relwlev = (self.latest_level - self.typical_range[0]) / rrange
+            relwlev = (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])
             return relwlev
