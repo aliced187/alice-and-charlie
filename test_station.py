@@ -82,7 +82,7 @@ def test_create_monitoring_station():
     assert s.river == river
     assert s.town == town
 
-def test_typical_range_consistent():
+def test_relative_water_level():
 
     # Create a station for higher lower range
     s_id = "test-s-id"
@@ -92,8 +92,8 @@ def test_typical_range_consistent():
     trange = (22.3, 3.4445)
     river = "River X"
     town = "My Town"
-    latest_level = 5.0
-    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town, latest_level)
+    s.latest_level = 5.0
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
 
     # Create a station for higher lower range
     s2_id = "test-s2-id"
@@ -103,9 +103,9 @@ def test_typical_range_consistent():
     trange2 = (None)
     river2 = "River Y"
     town2 = "Not My Town"
-    latest_level2 = -3.0
+    s2.latest_level = -3.0
 
-    s2 = MonitoringStation(s2_id, m2_id, label2, coord2, trange2, river2, town2, latest_level2)
+    s2 = MonitoringStation(s2_id, m2_id, label2, coord2, trange2, river2, town2)
 
     # Create a station for correct ranges
     s3_id = "test-s3-id"
@@ -115,9 +115,9 @@ def test_typical_range_consistent():
     trange3 = (0.0, 5.0)
     river3 = "River X"
     town3 = "Our Town"
-    latest_level3 = 3
+    s3.latest_level = 3
 
-    s3 = MonitoringStation(s3_id, m3_id, label3, coord3, trange3, river3, town3, latest_level3)
+    s3 = MonitoringStation(s3_id, m3_id, label3, coord3, trange3, river3, town3)
 
     # Create a station for correct ranges
     s4_id = "test-s4-id"
@@ -127,9 +127,9 @@ def test_typical_range_consistent():
     trange4 = (-2, 2)
     river4 = "River W"
     town4 = "This Town"
-    latest_level4 = 4
+    s4.latest_level = 4
 
-    s4 = MonitoringStation(s4_id, m4_id, label4, coord4, trange4, river4, town4, latest_level4)
+    s4 = MonitoringStation(s4_id, m4_id, label4, coord4, trange4, river4, town4)
 
 
     assert s.relative_water_level() == None
