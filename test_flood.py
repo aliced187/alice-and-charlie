@@ -54,10 +54,10 @@ def test_stations_level_over_threshold():
     station3.latest_level = 4.8
     station4.latest_level = 1.5 
     station5.latest_level = -2.0
-    tol = 0.45
+    tol = 0.2
     output = stations_level_over_threshold(stations, tol)
     assert type(output) == list
-    assert output == [('Test 1', 1.5),('Test 4', 0.5)]
+    assert output == [('Test 1', 1.5), ('Test 4', 0.5)]
 
 def test_stations_highest_rel_level():
      #Create test station list 
@@ -106,6 +106,6 @@ def test_stations_highest_rel_level():
     station3.latest_level = 4.8
     station4.latest_level = 2.0
     station5.latest_level = 1.2
-    output = stations_level_over_threshold(stations, N)
+    output = stations_highest_rel_level(stations, N)
     assert type(output) == list
-    assert output == [('Test 1', 1.7),('Test 4', 0.5)]
+    assert output == [('Test 1', 1.7), ('Test 4', 0.5)]
