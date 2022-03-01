@@ -44,7 +44,7 @@ class MonitoringStation:
             return False
         #If a value of the range is provided as None (none available), it will return False to show a inconsistant dataset
         else:
-            value = self.typical_range[1] - self.latest_level[0]
+            value = self.typical_range[1] - self.typical_range[0]
             if value >= 0:
                 return True
                 #If the range is positive (higher val is larger than lower val), it will return True for a consistant data set as we know all ranges are provided.
@@ -54,10 +54,10 @@ class MonitoringStation:
 
     def relative_water_level(self):
         #retrieves typical range and checks if it is consistant, if not, return None
-        rrange = typical_range_consistent(self)
+        rrange = self.typical_range_consistent
         if rrange == False:
             return None
         #if typical range is consistant, returns relative water level
         else:
-            relwlev = (self.latest_level - self.latest_level[0]) / rrange[x]
+            relwlev = (self.latest_level - self.typical_range[0]) / rrange
             return relwlev
