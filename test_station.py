@@ -92,8 +92,8 @@ def test_relative_water_level():
     trange = (22.3, 3.4445)
     river = "River X"
     town = "My Town"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)7
     s.latest_level = 5.0
-    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
 
     # Create a station for higher lower range
     s2_id = "test-s2-id"
@@ -103,9 +103,8 @@ def test_relative_water_level():
     trange2 = (None)
     river2 = "River Y"
     town2 = "Not My Town"
-    s2.latest_level = -3.0
-
     s2 = MonitoringStation(s2_id, m2_id, label2, coord2, trange2, river2, town2)
+    s2.latest_level = -3.0
 
     # Create a station for correct ranges
     s3_id = "test-s3-id"
@@ -115,9 +114,8 @@ def test_relative_water_level():
     trange3 = (0.0, 5.0)
     river3 = "River X"
     town3 = "Our Town"
-    s3.latest_level = 3
-
     s3 = MonitoringStation(s3_id, m3_id, label3, coord3, trange3, river3, town3)
+    s3.latest_level = 3
 
     # Create a station for correct ranges
     s4_id = "test-s4-id"
@@ -127,9 +125,8 @@ def test_relative_water_level():
     trange4 = (-2, 2)
     river4 = "River W"
     town4 = "This Town"
-    s4.latest_level = 4
-
     s4 = MonitoringStation(s4_id, m4_id, label4, coord4, trange4, river4, town4)
+    s4.latest_level = 4
 
 
     assert s.relative_water_level() == None

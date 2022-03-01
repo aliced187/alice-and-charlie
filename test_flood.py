@@ -31,8 +31,7 @@ def test_stations_level_over_threshold():
                                  coord= (100.0, 100.0),
                                  typical_range= (None),
                                  river= 'river2',
-                                 town= 'town3',
-                                 latest_level = 4.8)
+                                 town= 'town3')
     station4 = MonitoringStation(station_id= 'stn_id_4',
                                  measure_id= 'measure_id_4',
                                  label= 'Test 4',
