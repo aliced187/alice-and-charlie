@@ -54,7 +54,7 @@ class MonitoringStation:
 
     def relative_water_level(self):
         #retrieves typical range and checks if it is consistant, if not, return None
-        rrange = self.typical_range_consistent
+        rrange = self.typical_range_consistent()
         if rrange == False:
             return None
         #if typical range is consistant, returns relative water level

@@ -89,7 +89,7 @@ def test_relative_water_level():
     m_id = "test-m-id"
     label = "some station"
     coord = (-2.0, 4.0)
-    trange = (22.3, 3.4445)
+    trange = (22.3, 3.45)
     river = "River X"
     town = "My Town"
     s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
@@ -127,7 +127,7 @@ def test_relative_water_level():
     town4 = "This Town"
     s4 = MonitoringStation(s4_id, m4_id, label4, coord4, trange4, river4, town4)
     s4.latest_level = 4
-
+    
     assert s.relative_water_level() == None
     assert s2.relative_water_level() == None
     assert s3.relative_water_level() == 0.6
