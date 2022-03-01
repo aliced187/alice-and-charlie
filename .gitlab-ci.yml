@@ -17,6 +17,7 @@ test:
   - python test_utils.py
   - python test_geo.py
   - python test_analysis.py
+  - python test_flood.py
 
   # Run deliverables. Add your deliverables to the test system here.
   - python Task1A.py
@@ -27,6 +28,9 @@ test:
   - python Task1F.py
 
   - python Task2A.py
+  - python Task2B.py
+  - python Task2C.py
   - python Task2D.py
   - python Task2E.py 
   - python Task2F.py
+  - python Task2G.py

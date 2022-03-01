@@ -41,15 +41,10 @@ def run():
     for station in stations:
         if station.name in names:
             dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days=10))
-            plot_water_levels(station, dates, levels)
-
-   # for station in stations:
-    #    if station.name == 'Letcombe Basset':
-     #       dates, levels = fetch_measure_levels(station.measured_id, dt = datetime.timedelta(days=10))
-  
-           
-  
+            plot_water_levels(station, dates, levels)   
     
-run()
+if __name__ == "__main__":
+    print("*** Task 2E: CUED Part IA Flood Warning System ***")
+    run()
 
 
